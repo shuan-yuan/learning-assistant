@@ -1,0 +1,9 @@
+{
+  "name": "学习助手",
+  "short_name": "学习助手",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fffaf2",
+  "theme_color": "#fffaf2",
+  "lang": "zh-CN"
+}

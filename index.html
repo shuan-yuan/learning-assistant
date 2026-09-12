@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fffaf2" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>学习助手</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="manifest" href="manifest.webmanifest" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span>学习助手</span></div>
+    </header>
+
+    <section id="homeView" class="view active">
+      <div class="greeting"><p>下午好，小朋友</p><h1>今天也一起进步吧！</h1></div>
+      <section class="hero-card">
+        <div><span class="eyebrow">今日学习建议</span><h2>先检查作业，再练习错题</h2><p>拍下作业，快速找到需要复习的知识点。</p><button class="primary" data-open="scanView">拍照批改 <span>→</span></button></div>
+        <div class="hero-illustration" aria-hidden="true"><div class="sun"></div><div class="book">✓</div><div class="pencil"></div></div>
+      </section>
+      <section class="section-heading"><div><h2>学习工具</h2><p>选择一个开始学习</p></div></section>
+      <div class="tool-grid">
+        <button class="tool-card coral" data-open="scanView"><span class="tool-icon">▣</span><strong>作业批改</strong><small>拍照检查，找到错误</small><span class="arrow">→</span></button>
+        <button class="tool-card blue" data-open="practiceView"><span class="tool-icon">✦</span><strong>错题练习</strong><small>针对薄弱点巩固</small><span class="arrow">→</span></button>
+        <button class="tool-card yellow" data-open="reportView"><span class="tool-icon">◔</span><strong>学习报告</strong><small>看看这周的进步</small><span class="arrow">→</span></button>
+      </div>
+      <section class="progress-card"><div><span class="eyebrow">本周学习</span><h2>已完成 12 次练习</h2><p>再完成 3 次，就能获得「坚持小达人」！</p></div><div class="ring"><b>4</b><small>天</small></div></section>
+    </section>
+
+    <section id="scanView" class="view">
+      <button class="back" data-home>← 返回首页</button><h1>作业批改</h1><p class="sub">选择科目后，上传清晰、完整的作业照片。</p>
+      <div class="subject-tabs" role="tablist"><button class="selected" data-subject="数学">数学</button><button data-subject="语文">语文</button><button data-subject="英语">英语</button></div>
+      <label class="upload-zone" for="photoInput"><input id="photoInput" type="file" accept="image/*" capture="environment" /><span class="camera">⌁</span><strong>拍照或上传作业</strong><small>支持 JPG、PNG，建议光线充足、字迹清晰</small><span class="outline-btn">选择照片</span></label>
+      <div id="photoPreview" class="photo-preview hidden"></div>
+      <button id="gradeBtn" class="primary wide" disabled>开始智能批改</button>
+      <div id="gradingState" class="grading hidden"><span class="spinner"></span><span>正在识别题目与计算步骤…</span></div>
+    </section>
+
+    <section id="resultView" class="view">
+      <button class="back" data-home>← 返回首页</button><div class="result-title"><div><span class="eyebrow">批改完成</span><h1>这份作业完成得不错！</h1></div><div class="score">86<small>分</small></div></div>
+      <div class="stats"><div><b>12</b><span>题目总数</span></div><div><b class="good">10</b><span>回答正确</span></div><div><b class="wrong">2</b><span>需要订正</span></div></div>
+      <section class="mistakes"><h2>需要订正的题目</h2><article><span class="q-num">7</span><div><b>计算题</b><p>36 ÷ 4 + 18 = <em>24</em></p><small>先算除法：36 ÷ 4 = 9，再算 9 + 18 = 27。</small></div><button class="fix">去订正</button></article><article><span class="q-num">10</span><div><b>应用题</b><p>小明有 24 支铅笔，送出 8 支…</p><small>检查题目问的是「还剩多少支」，用减法计算。</small></div><button class="fix">去订正</button></article></section>
+      <button class="primary wide" data-open="practiceView">根据错题开始练习 →</button>
+    </section>
+
+    <section id="practiceView" class="view">
+      <button class="back" data-home>← 返回首页</button><span id="practiceEyebrow" class="eyebrow">错题巩固 · 数学</span><h1>来做一道相似题</h1>
+      <div class="practice-tabs" role="tablist" aria-label="选择练习科目"><button class="selected" data-practice-subject="数学">数学</button><button data-practice-subject="语文">语文</button><button data-practice-subject="英语">英语</button></div>
+      <div class="weakness-card"><span>本次针对错题</span><b id="weaknessText">四则混合运算：先算乘除，后算加减</b></div>
+      <div class="question-card"><div class="question-top"><span id="questionCount">第 1 / 5 题</span><span id="streakText">★ 连对 0 题</span></div><p id="questionLead">先算一算，再填写答案：</p><h2 id="questionText">48 ÷ 6 + 17 = ?</h2><div class="answer-row"><input id="answerInput" placeholder="输入答案" aria-label="答案" /><button id="checkAnswer" class="primary">检查答案</button></div><p id="answerFeedback" class="feedback" aria-live="polite"></p><button id="nextQuestion" class="text-button hidden">换一道相似题 →</button></div>
+      <div class="tip-card"><span>💡</span><p><b>小提示：</b><span id="tipText">计算时要先完成除法，再进行加法哦。</span></p></div>
+    </section>
+
+    <section id="reportView" class="view"><button class="back" data-home>← 返回首页</button><span class="eyebrow">学习报告</span><h1>本周学习轨迹</h1><div class="report-card"><h2>学习时长</h2><div class="bars"><i style="height:45%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:88%"></i><i style="height:64%"></i><i style="height:92%"></i><i style="height:28%"></i></div><div class="week"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div></div><div class="insight"><span>🌟</span><p><b>发现你的进步</b><br>数学计算题的正确率比上周提高了 15%！</p></div></section>
+    <nav class="bottom-nav"><button class="nav-active" data-home>⌂<span>首页</span></button><button data-open="practiceView">✦<span>练习</span></button><button data-open="reportView">◔<span>报告</span></button></nav>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
