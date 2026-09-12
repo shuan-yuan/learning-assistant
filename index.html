@@ -42,10 +42,11 @@
     </section>
 
     <section id="resultView" class="view">
-      <button class="back" data-home>← 返回首页</button><div class="result-title"><div><span class="eyebrow">批改完成</span><h1>这份作业完成得不错！</h1></div><div class="score">86<small>分</small></div></div>
-      <div class="stats"><div><b>12</b><span>题目总数</span></div><div><b class="good">10</b><span>回答正确</span></div><div><b class="wrong">2</b><span>需要订正</span></div></div>
-      <section class="mistakes"><h2>需要订正的题目</h2><article><span class="q-num">7</span><div><b>计算题</b><p>36 ÷ 4 + 18 = <em>24</em></p><small>先算除法：36 ÷ 4 = 9，再算 9 + 18 = 27。</small></div><button class="fix">去订正</button></article><article><span class="q-num">10</span><div><b>应用题</b><p>小明有 24 支铅笔，送出 8 支…</p><small>检查题目问的是「还剩多少支」，用减法计算。</small></div><button class="fix">去订正</button></article></section>
-      <button class="primary wide" data-open="practiceView">根据错题开始练习 →</button>
+      <button class="back" data-home>← 返回首页</button><div class="result-title"><div><span class="eyebrow">批改完成</span><h1 id="resultHeadline">正在整理批改结果…</h1></div><div id="scoreValue" class="score">--<small>分</small></div></div>
+      <p id="resultSummary" class="sub"></p>
+      <div class="stats"><div><b id="totalCount">0</b><span>题目总数</span></div><div><b id="correctCount" class="good">0</b><span>回答正确</span></div><div><b id="wrongCount" class="wrong">0</b><span>需要订正</span></div></div>
+      <section class="mistakes"><h2>需要订正的题目</h2><div id="mistakeList"><p class="sub">正在读取错题…</p></div></section>
+      <button id="practiceFromMistakes" class="primary wide" data-open="practiceView">根据错题开始练习 →</button>
     </section>
 
     <section id="practiceView" class="view">
