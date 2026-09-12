@@ -1,0 +1,51 @@
+/* Mobile-first refinements for phones and iPads */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { min-width: 280px; overflow-x: hidden; }
+button, input { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.app-shell { width: 100%; min-height: 100dvh; padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
+.bottom-nav { padding-bottom: calc(10px + env(safe-area-inset-bottom)); min-height: calc(63px + env(safe-area-inset-bottom)); }
+.bottom-nav button, .primary, .fix, .text-button, .subject-tabs button, .practice-tabs button { min-height: 44px; }
+.tool-card { min-height: 174px; }
+.question-card h2 { overflow-wrap: anywhere; }
+.weakness-card { flex-wrap: wrap; }
+
+@media (max-width: 374px) {
+  .app-shell { padding: 16px 14px calc(84px + env(safe-area-inset-bottom)); }
+  .topbar { margin-bottom: 20px; }
+  .greeting h1, h1 { font-size: 25px; }
+  .hero-card { padding: 20px 16px; margin: 18px 0 24px; }
+  .hero-card h2 { font-size: 20px; }
+  .hero-illustration { display: none; }
+  .tool-grid { grid-template-columns: 1fr; }
+  .tool-card { min-height: 108px; padding: 16px 18px; }
+  .tool-icon { display: inline-block; margin: 0 8px 0 0; }
+  .tool-card strong { display: inline; }
+  .tool-card small { margin-left: 36px; }
+  .question-card, .report-card { padding: 18px 15px; }
+  .question-card h2 { font-size: 23px; margin: 26px 0; }
+}
+
+@media (min-width: 375px) and (max-width: 599px) {
+  .app-shell { padding: 18px 18px calc(88px + env(safe-area-inset-bottom)); }
+  .tool-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tool-card { padding: 15px 10px; min-height: 151px; }
+  .tool-card strong { font-size: 14px; }
+  .tool-card small { font-size: 11px; overflow-wrap: anywhere; }
+  .hero-illustration { width: 90px; transform: scale(.82); transform-origin: center; }
+}
+
+@media (min-width: 600px) and (max-width: 1199px) {
+  .app-shell { max-width: none; padding: 30px 7vw calc(96px + env(safe-area-inset-bottom)); }
+  .hero-card { min-height: 225px; padding: 34px 40px; }
+  .tool-grid { gap: 20px; }
+  .tool-card { min-height: 185px; }
+  .question-card, .report-card { padding: 32px; }
+  .question-card h2 { font-size: clamp(28px, 4vw, 38px); }
+  .bottom-nav { width: 100%; }
+}
+
+@media (min-width: 900px) and (orientation: landscape) {
+  .app-shell { max-width: 1180px; padding-inline: 8vw; }
+  .bottom-nav { width: min(1180px, 100%); }
+}
